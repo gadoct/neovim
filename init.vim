@@ -27,12 +27,15 @@ Plugin 'tpope/vim-dadbod'
 Plugin 'sebdah/vim-delve'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'Shougo/defx.nvim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'chrisbra/csv.vim'
+"Plugin 'OmniSharp/omnisharp-vim'
 "Plugin 'tweekmonster/braceless.vim'
 "Plugin 'airblade/vim-gitgutter'
 "Plugin 'tpope/vim-surround'
 " FIXME
 "Plugin 'vim-syntastic/syntastic'
-"Plugin 'OmniSharp/omnisharp-vim'
 "Plugin 'easymotion/vim-easymotion'
 "Plugin 'goerz/ipynb_notedown.vim'
 "Plugin 'renyard/vim-git-flow-format'
@@ -52,7 +55,10 @@ set expandtab
 set autowrite
 set autowriteall
 set noswapfile
+set smartcase
 set ignorecase
+set list
+set lcs=eol:§,tab:¤›,extends:»,precedes:«,nbsp:‡
 
 imap jk <Esc>
 
@@ -88,13 +94,11 @@ call denite#custom#map(
       \ '<denite:do_action:reset>',
       \ 'noremap'
       \)
-
 map <leader>d :NERDTreeToggle<cr>
 
 map <leader>f :Denite file/rec<cr>
 
 let mapleader = "\\"
-
 "config undodir
 set undodir=~/.nvim/undodir
 set undofile
@@ -133,3 +137,4 @@ au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+let g:UltiSnipsExpandTrigger="<tab>"
