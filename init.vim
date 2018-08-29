@@ -32,11 +32,10 @@ Plugin 'honza/vim-snippets'
 Plugin 'chrisbra/csv.vim'
 Plugin 'andrewstuart/vim-kubernetes'
 Plugin 'airblade/vim-gitgutter'
-"Plugin 'OmniSharp/omnisharp-vim'
-"Plugin 'tweekmonster/braceless.vim'
-"Plugin 'airblade/vim-gitgutter'
-"Plugin 'tpope/vim-surround'
+Plugin 'tweekmonster/braceless.vim'
 " FIXME
+"Plugin 'tpope/vim-surround'
+"Plugin 'Valloric/YouCompleteMe' TODO
 "Plugin 'vim-syntastic/syntastic'
 "Plugin 'easymotion/vim-easymotion'
 "Plugin 'goerz/ipynb_notedown.vim'
@@ -63,6 +62,9 @@ set list
 set lcs=eol:§,tab:¤›,extends:»,precedes:«,nbsp:‡
 
 imap jk <Esc>
+
+nmap ]q :lnext<cr>
+nmap [q :lprevious<cr>
 
 noremap <F5> :source ~/.config/nvim/init.vim<cr>
 
@@ -135,8 +137,10 @@ let g:deoplete#keyword_patterns['default'] = '\h\w*'
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 let g:deoplete#sources#go#align_class = 1
+"FIXME
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
+"TODO
 let g:UltiSnipsExpandTrigger="<tab>"
