@@ -1,49 +1,51 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'fatih/vim-go'
-Plugin 'Shougo/denite.nvim' "TODO
-"Plugin 'Shougo/deoplete.nvim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'tomasr/molokai'
-Plugin 'chemzqm/denite-git'
-"Plugin 'zchee/deoplete-go'
-Plugin 'sjl/gundo.vim'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'elzr/vim-json'
-"Plugin 'Shougo/neco-vim'
-"Plugin 'Shougo/neco-syntax'
-Plugin 'tpope/vim-dadbod'
-Plugin 'sebdah/vim-delve'
-Plugin 'jeetsukumaran/vim-buffergator'
-Plugin 'Shougo/defx.nvim'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'chrisbra/csv.vim'
-Plugin 'andrewstuart/vim-kubernetes'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tweekmonster/braceless.vim'
-Plugin 'Valloric/YouCompleteMe'
+if &compatible
+    set nocompatible
+endif
+" Add the dein installation directory into runtimepath
+set runtimepath+=~/.dein/repos/github.com/Shougo/dein.vim
+
+if dein#load_state('~/.dein')
+    call dein#begin('~/.dein')
+    call dein#add('~/.dein')
+    call dein#add('fatih/vim-go')
+    call dein#add('Shougo/denite.nvim') "TODO
+    call dein#add('Shougo/deoplete.nvim')
+    call dein#add('tpope/vim-fugitive')
+    call dein#add('scrooloose/nerdcommenter')
+    call dein#add('scrooloose/nerdtree')
+    call dein#add('ekalinin/Dockerfile.vim')
+    call dein#add('vim-airline/vim-airline')
+    call dein#add('vim-airline/vim-airline-themes')
+    call dein#add('bronson/vim-trailing-whitespace')
+    call dein#add('tomasr/molokai')
+    call dein#add('chemzqm/denite-git')
+    call dein#add('zchee/deoplete-go')
+    call dein#add('sjl/gundo.vim')
+    call dein#add('kien/rainbow_parentheses.vim')
+    call dein#add('elzr/vim-json')
+    call dein#add('Shougo/neco-vim')
+    call dein#add('Shougo/neco-syntax')
+    call dein#add('tpope/vim-dadbod')
+    call dein#add('sebdah/vim-delve')
+    call dein#add('jeetsukumaran/vim-buffergator')
+    call dein#add('Shougo/defx.nvim')
+    call dein#add('SirVer/ultisnips')
+    call dein#add('honza/vim-snippets')
+    call dein#add('chrisbra/csv.vim')
+    call dein#add('andrewstuart/vim-kubernetes')
+    call dein#add('airblade/vim-gitgutter')
+    call dein#add('tweekmonster/braceless.vim')
 " FIXME
-"Plugin 'tpope/vim-surround'
-"Plugin 'vim-syntastic/syntastic'
-"Plugin 'easymotion/vim-easymotion'
-"Plugin 'goerz/ipynb_notedown.vim'
-"Plugin 'renyard/vim-git-flow-format'
-"Plugin 'mbbill/undotree'
-"Plugin 'terryma/vim-smooth-scroll'
-"Plugin 'tbastos/vim-lua'
-call vundle#end()
+"        call dein#add('tpope/vim-surround')
+"        call dein#add('vim-syntastic/syntastic')
+"        call dein#add('easymotion/vim-easymotion')
+"        call dein#add('goerz/ipynb_notedown.vim')
+"        call dein#add('renyard/vim-git-flow-format')
+"        call dein#add('mbbill/undotree')
+"        call dein#add('terryma/vim-smooth-scroll')
+"        call dein#add('tbastos/vim-lua')
+endif
 
 filetype plugin indent on
 set number
@@ -108,6 +110,10 @@ set undodir=~/.nvim/undodir
 set undofile
 set undolevels=1000
 set undoreload=10000
+au FileType vim set expandtab
+au FileType vim set shiftwidth=4
+au FileType vim set softtabstop=4
+au FileType vim set tabstop=4
 au FileType go set expandtab
 au FileType go set shiftwidth=4
 au FileType go set softtabstop=4
