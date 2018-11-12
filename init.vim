@@ -1,8 +1,6 @@
-" set the runtime path to include Vundle and initialize
 if &compatible
     set nocompatible
 endif
-" Add the dein installation directory into runtimepath
 set runtimepath+=~/.dein/repos/github.com/Shougo/dein.vim
 
 if dein#load_state('~/.dein')
@@ -22,13 +20,11 @@ if dein#load_state('~/.dein')
     call dein#add('chemzqm/denite-git')
     call dein#add('zchee/deoplete-go')
     call dein#add('sjl/gundo.vim')
-    call dein#add('kien/rainbow_parentheses.vim')
     call dein#add('elzr/vim-json')
     call dein#add('Shougo/neco-vim')
     call dein#add('Shougo/neco-syntax')
     call dein#add('tpope/vim-dadbod')
     call dein#add('sebdah/vim-delve')
-    call dein#add('jeetsukumaran/vim-buffergator')
     call dein#add('Shougo/defx.nvim')
     call dein#add('SirVer/ultisnips')
     call dein#add('honza/vim-snippets')
@@ -36,9 +32,16 @@ if dein#load_state('~/.dein')
     call dein#add('andrewstuart/vim-kubernetes')
     call dein#add('airblade/vim-gitgutter')
     call dein#add('tweekmonster/braceless.vim')
+    call dein#add('majutsushi/tagbar')
+    call dein#add('vim-syntastic/syntastic')
+    call dein#add('rust-lang/rust.vim')
+    call dein#add('tpope/vim-fireplace')
+    call dein#add('tpope/vim-salve')
+    call dein#add('uarun/vim-protobuf')
+    call dein#add('mdempsky/gocode')
 " FIXME
+    "call dein#add('jeetsukumaran/vim-buffergator')
 "        call dein#add('tpope/vim-surround')
-"        call dein#add('vim-syntastic/syntastic')
 "        call dein#add('easymotion/vim-easymotion')
 "        call dein#add('goerz/ipynb_notedown.vim')
 "        call dein#add('renyard/vim-git-flow-format')
@@ -63,6 +66,10 @@ set ignorecase
 set list
 set lcs=eol:§,tab:¤›,extends:»,precedes:«,nbsp:‡
 
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+
 imap jk <Esc>
 
 nmap ]q :lnext<cr>
@@ -71,7 +78,7 @@ nmap [q :lprevious<cr>
 noremap <F5> :source ~/.config/nvim/init.vim<cr>
 
 autocmd FileType go map <leader>r :GoRun<cr>
-autocmd FileType go map :err :GoErrCheck
+autocmd FileType rust map <leader>r :RustRun<cr>
 
 call denite#custom#map(
               \ 'insert',
@@ -100,7 +107,8 @@ call denite#custom#map(
       \ '<denite:do_action:reset>',
       \ 'noremap'
       \)
-map <leader>d :NERDTreeToggle<cr>
+map <leader>tr :NERDTreeToggle<cr>
+map <leader>tb :TagbarToggle<cr>
 
 map <leader>f :Denite file/rec<cr>
 
@@ -110,11 +118,6 @@ set undodir=~/.nvim/undodir
 set undofile
 set undolevels=1000
 set undoreload=10000
-au FileType vim set expandtab
-au FileType vim set shiftwidth=4
-au FileType vim set softtabstop=4
-au FileType vim set tabstop=4
-au FileType go set expandtab
 au FileType go set shiftwidth=4
 au FileType go set softtabstop=4
 au FileType go set tabstop=4
@@ -133,7 +136,7 @@ let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
 let g:go_gocode_unimported_packages = 1
 let g:go_fmt_command = "goimports"
-let g:deoplete#sources#go#gocode_binary = "/home/kirill/go/bin/gocode"
+let g:deoplete#sources#go#gocode_binary = "/home/sovv/go/bin/gocode"
 set completeopt=longest,menuone " auto complete setting
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
@@ -143,10 +146,34 @@ let g:deoplete#keyword_patterns['default'] = '\h\w*'
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 let g:deoplete#sources#go#align_class = 1
-"FIXME
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+let g:rainbow_active = 1
 "TODO
 let g:UltiSnipsExpandTrigger="<tab>"
+
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
