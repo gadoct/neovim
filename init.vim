@@ -39,6 +39,8 @@ if dein#load_state('~/.dein')
     call dein#add('tpope/vim-salve')
     call dein#add('uarun/vim-protobuf')
     call dein#add('mdempsky/gocode')
+    call dein#add('clojure-vim/async-clj-omni')
+    call dein#add('kien/rainbow_parentheses.vim')
 " FIXME
     "call dein#add('jeetsukumaran/vim-buffergator')
 "        call dein#add('tpope/vim-surround')
@@ -109,6 +111,7 @@ call denite#custom#map(
       \)
 map <leader>tr :NERDTreeToggle<cr>
 map <leader>tb :TagbarToggle<cr>
+map <leader>tt :GoTest<cr>
 
 map <leader>f :Denite file/rec<cr>
 
@@ -177,3 +180,31 @@ let g:tagbar_type_go = {
 	\ 'ctagsbin'  : 'gotags',
 	\ 'ctagsargs' : '-sort -silent'
 \ }
+
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
+
+"rainbow_parentheses
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+au VimEnter * RainbowParenthesesToggle
+au VimEnter * RainbowParenthesesLoadRound
+au VimEnter * RainbowParenthesesLoadSquare
+au VimEnter * RainbowParenthesesLoadBraces
