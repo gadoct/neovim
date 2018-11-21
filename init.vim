@@ -34,26 +34,29 @@ if dein#load_state('~/.dein')
     call dein#add('tweekmonster/braceless.vim')
     call dein#add('majutsushi/tagbar')
     call dein#add('vim-syntastic/syntastic')
-    call dein#add('rust-lang/rust.vim')
     call dein#add('tpope/vim-fireplace')
     call dein#add('tpope/vim-salve')
     call dein#add('uarun/vim-protobuf')
     call dein#add('mdempsky/gocode')
     call dein#add('clojure-vim/async-clj-omni')
     call dein#add('kien/rainbow_parentheses.vim')
+    call dein#add('venantius/vim-cljfmt')
+    call dein#add('guns/vim-sexp')
+    call dein#add('Shougo/deoplete-clangx')
 " FIXME
     "call dein#add('jeetsukumaran/vim-buffergator')
-"        call dein#add('tpope/vim-surround')
-"        call dein#add('easymotion/vim-easymotion')
-"        call dein#add('goerz/ipynb_notedown.vim')
-"        call dein#add('renyard/vim-git-flow-format')
-"        call dein#add('mbbill/undotree')
-"        call dein#add('terryma/vim-smooth-scroll')
-"        call dein#add('tbastos/vim-lua')
+    "call dein#add('rust-lang/rust.vim')
+    "call dein#add('tpope/vim-surround')
+    "call dein#add('easymotion/vim-easymotion')
+    "call dein#add('goerz/ipynb_notedown.vim')
+    "call dein#add('renyard/vim-git-flow-format')
+    "call dein#add('mbbill/undotree')
+    "call dein#add('terryma/vim-smooth-scroll')
+    "call dein#add('tbastos/vim-lua')
 endif
 
 filetype plugin indent on
-set number
+set relativenumber
 colorscheme molokai
 set mouse=a
 set so=999
@@ -186,6 +189,7 @@ let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 
 "rainbow_parentheses
 let g:rbpt_colorpairs = [
+    \ ['darkred',     'DarkOrchid3'],
     \ ['brown',       'RoyalBlue3'],
     \ ['Darkblue',    'SeaGreen3'],
     \ ['darkgray',    'DarkOrchid3'],
@@ -195,12 +199,10 @@ let g:rbpt_colorpairs = [
     \ ['darkmagenta', 'DarkOrchid3'],
     \ ['brown',       'firebrick3'],
     \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
     \ ['darkmagenta', 'DarkOrchid3'],
     \ ['Darkblue',    'firebrick3'],
     \ ['darkgreen',   'RoyalBlue3'],
     \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
     \ ['red',         'firebrick3'],
     \ ]
 
@@ -208,3 +210,5 @@ au VimEnter * RainbowParenthesesToggle
 au VimEnter * RainbowParenthesesLoadRound
 au VimEnter * RainbowParenthesesLoadSquare
 au VimEnter * RainbowParenthesesLoadBraces
+
+let g:sexp_enable_insert_mode_mappings = 0
